@@ -57,11 +57,6 @@ public class CategoryRestControllerAdapterTest {
         when(categoryServicePort.createCategory(any(Category.class))).thenReturn(category);
         when(categoryResponseMapper.toResponse(any(Category.class))).thenReturn(response);
 
-        // Imprimir para verificar los valores devueltos por los mocks
-        System.out.println("Mapped Category: " + categoryRequestMapper.toModel(request));
-        System.out.println("Created Category: " + categoryServicePort.createCategory(category));
-        System.out.println("Response from Mapper: " + categoryResponseMapper.toResponse(category));
-
         // Serializar el request a JSON
         String requestJson = objectMapper.writeValueAsString(request);
 
@@ -72,7 +67,7 @@ public class CategoryRestControllerAdapterTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.name", is("Books")))
-                .andExpect(jsonPath("$.description", is("Category for books")))
-                .andDo(print());
+                .andExpect(jsonPath("$.description", is("Category for books")));
+
     }
 }
