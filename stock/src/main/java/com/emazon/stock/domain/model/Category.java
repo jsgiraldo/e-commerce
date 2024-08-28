@@ -44,7 +44,7 @@ public class Category {
         if (name == null || name.isEmpty() || name.length() > 50) {
             throw new IllegalArgumentException("The category name is invalid.");
         }
-        if (description != null && description.length() > 90) {
+        if (description == null || description.length() > 90) {
             throw new IllegalArgumentException("The category description is invalid.");
         }
     }
