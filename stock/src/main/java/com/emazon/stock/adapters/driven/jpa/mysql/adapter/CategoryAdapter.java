@@ -5,6 +5,8 @@ import com.emazon.stock.adapters.driven.jpa.mysql.repository.ICategoryRepository
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.ICategoryPersistencePort;
 import com.emazon.stock.adapters.driven.jpa.mysql.mapper.ICategoryEntityMapper;
+import com.emazon.stock.adapters.driven.jpa.mysql.exception.CategoryAlreadyExistsException;
+
 
 import java.util.Optional;
 

@@ -5,6 +5,8 @@ import com.emazon.stock.adapters.driving.http.dto.response.CategoryResponse;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryRequestMapper;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryResponseMapper;
 import com.emazon.stock.domain.api.ICategoryServicePort;
+import com.emazon.stock.domain.model.Category;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +27,13 @@ public class CategoryRestControllerAdapter {
 
     @PostMapping
     public ResponseEntity<CategoryResponse> createCategory(@RequestBody AddCategoryRequest request) {
-        var category = categoryRequestMapper.toModel(request);
-        var createdCategory = categoryServicePort.createCategory(category);
-        var response = categoryResponseMapper.toResponse(createdCategory);
+        Category category = categoryRequestMapper.toModel(request);
+        System.out.println("Category mapped from request: " + category);
+        Category createdCategory = categoryServicePort.createCategory(category);
+        System.out.println("Created Category: " + createdCategory);
+        CategoryResponse response = categoryResponseMapper.toResponse(createdCategory);
+
+        System.out.println("Response being returned: " + response);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
