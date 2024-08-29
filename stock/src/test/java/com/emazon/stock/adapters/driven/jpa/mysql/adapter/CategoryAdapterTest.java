@@ -31,7 +31,7 @@ class CategoryAdapterTest {
     private CategoryAdapter categoryAdapter;
 
     @Test
-    public void shouldSaveCategorySuccessfully() {
+    void shouldSaveCategorySuccessfully() {
         Category category = new Category(null, "Books", "Category for books");
         CategoryEntity categoryEntity = new CategoryEntity();
 
@@ -46,7 +46,7 @@ class CategoryAdapterTest {
 
     }
     @Test
-    public void shouldThrowExceptionWhenCategoryAlreadyExists() {
+    void shouldThrowExceptionWhenCategoryAlreadyExists() {
         when(categoryRepository.findByName("Books")).thenReturn(Optional.of(new CategoryEntity()));
 
         Category category = new Category(null, "Books", "Category for books");

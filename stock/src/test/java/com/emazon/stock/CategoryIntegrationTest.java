@@ -2,7 +2,6 @@ package com.emazon.stock;
 
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,13 +13,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class CategoryIntegrationTest {
+class CategoryIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void shouldCreateCategoryAndPersistToDatabase() throws Exception {
+    void shouldCreateCategoryAndPersistToDatabase() throws Exception {
         mockMvc.perform(post("/categories")
                         .contentType("application/json")
                         .content("{\"name\":\"Books\",\"description\":\"Category for books\"}"))

@@ -3,7 +3,6 @@ package com.emazon.stock.adapters.driven.jpa.mysql.mapper;
 import com.emazon.stock.adapters.driven.jpa.mysql.entity.CategoryEntity;
 import com.emazon.stock.domain.model.Category;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ICategoryEntityMapper {

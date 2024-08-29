@@ -9,7 +9,6 @@ import com.emazon.stock.domain.model.Category;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -20,15 +19,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.hamcrest.Matchers.is;
 
-import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(CategoryRestControllerAdapter.class)
-public class CategoryRestControllerAdapterTest {
+class CategoryRestControllerAdapterTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -46,7 +43,7 @@ public class CategoryRestControllerAdapterTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void shouldReturn201WhenCategoryCreated() throws Exception {
+    void shouldReturn201WhenCategoryCreated() throws Exception {
         // Configurar el request y la respuesta mockeada
         var request = new AddCategoryRequest("Books", "Category for books");
         var category = new Category(1L, "Books", "Category for books");

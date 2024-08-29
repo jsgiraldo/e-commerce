@@ -25,7 +25,7 @@ class CategoryUseCaseTest {
     private CategoryUseCase categoryUseCase;
 
     @Test
-    public void shouldCreateCategorySuccessfully() {
+    void shouldCreateCategorySuccessfully() {
         // Crear una instancia de category válida
         Category category = new Category(null, "Books", "Category for books");
         // Configuración del mock
@@ -38,7 +38,7 @@ class CategoryUseCaseTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenNameIsInvalid() {
+    void shouldThrowExceptionWhenNameIsInvalid() {
         // Crear una instancia de category con nombre inválido
         Category category = new Category(null, "", "Category without name");
         //Verificar el mensaje de la excepción
@@ -46,7 +46,7 @@ class CategoryUseCaseTest {
         assertEquals("The category name is invalid.", exception.getMessage());
     }
     @Test
-    public void shouldThrowExceptionWhenNameAlreadyExists() {
+    void shouldThrowExceptionWhenNameAlreadyExists() {
         // Configurar una categoría existente
         Category category = new Category(null, "Books", "Category for books");
         when(categoryPersistencePort.saveCategory(any(Category.class)))
@@ -60,7 +60,7 @@ class CategoryUseCaseTest {
         assertEquals("The category already exists.", exception.getMessage());
     }
     @Test
-    public void shouldThrowExceptionWhenDescriptionIsNull() {
+    void shouldThrowExceptionWhenDescriptionIsNull() {
         // Crear una categoría con descripción nula
         Category category = new Category(null, "Books", null);
 
@@ -70,7 +70,7 @@ class CategoryUseCaseTest {
         assertEquals("The category description is invalid.", exception.getMessage());
     }
     @Test
-    public void shouldThrowExceptionWhenNameExceedsMaxLength() {
+    void shouldThrowExceptionWhenNameExceedsMaxLength() {
         // Crear una categoría con un nombre que excede el límite de 50 caracteres
         Category category = new Category(null, "A".repeat(51), "Category with a long name");
 
@@ -80,7 +80,7 @@ class CategoryUseCaseTest {
         assertEquals("The category name is invalid.", exception.getMessage());
     }
     @Test
-    public void shouldThrowExceptionWhenDescriptionExceedsMaxLength() {
+    void shouldThrowExceptionWhenDescriptionExceedsMaxLength() {
         // Crear una categoría con una descripción que excede el límite de 90 caracteres
         Category category = new Category(null, "Books", "A".repeat(91));
 

@@ -13,7 +13,7 @@ class ICategoryEntityMapperTest {
 
 
     @Test
-    public void shouldMapCategoryToCategoryEntity() {
+    void shouldMapCategoryToCategoryEntity() {
         Category category = new Category(1L, "Books", "Category for books");
 
         CategoryEntity categoryEntity = mapper.toEntity(category);
@@ -23,7 +23,7 @@ class ICategoryEntityMapperTest {
         assertEquals(category.getDescription(), categoryEntity.getDescription());
     }
     @Test
-    public void shouldMapCategoryEntityToCategory() {
+    void shouldMapCategoryEntityToCategory() {
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setId(1L);
         categoryEntity.setName("Books");
