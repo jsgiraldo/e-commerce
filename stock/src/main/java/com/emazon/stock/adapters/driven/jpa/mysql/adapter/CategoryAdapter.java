@@ -6,6 +6,8 @@ import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.ICategoryPersistencePort;
 import com.emazon.stock.adapters.driven.jpa.mysql.mapper.ICategoryEntityMapper;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.CategoryAlreadyExistsException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 import java.util.Optional;
@@ -34,5 +36,10 @@ public class CategoryAdapter implements ICategoryPersistencePort {
     public Optional<Category> getCategoryById(Long id) {
         Optional<CategoryEntity> categoryEntity = categoryRepository.findById(id);
         return categoryEntity.map(categoryEntityMapper::toModel);
+    }
+    @Override
+    public Page<Category> findAll(Pageable pageable) {
+        Page<CategoryEntity> categoryEntities = categoryRepository.findAll(pageable);
+        return categoryEntities.map(categoryEntityMapper::toModel);
     }
 }
