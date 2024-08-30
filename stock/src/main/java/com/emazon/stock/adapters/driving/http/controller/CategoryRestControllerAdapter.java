@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/categories")
 public class CategoryRestControllerAdapter {
@@ -31,4 +33,15 @@ public class CategoryRestControllerAdapter {
         CategoryResponse response = categoryResponseMapper.toResponse(createdCategory);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryResponse> getCategoryById(@PathVariable Long id) {
+        Optional<Category> category = categoryServicePort.getCategoryById(id);
+        if (category.isPresent()) {
+            CategoryResponse response = categoryResponseMapper.toResponse(category.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
